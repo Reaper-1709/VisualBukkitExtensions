@@ -1,6 +1,9 @@
 # VisualBukkitExtensions
 Extensions for Visual Bukkit
 
+### AI rewriting
+The enhanced version with better grammer is available [here](README-enhanced.md)
+
 # Rework
 Hi everyone, since the Visual Bukkit 6 update, extensions are mostly redundant as you can just import the API or library thorugh maven. An exception to this is the bStats extension because it had to be shaded, which is not typically what an extension could do? or so you thought. Well, I managed to do so using an extension without modifying **any** of Visual Bukkit's core code (and disturbing the main developer). If you are interested in reading this tale of how everything was put togather and made to work or you are just someone willing to make extensions for VB6, read along.
 
