@@ -1,31 +1,27 @@
 package com.gmail.visualbukkit.extensions.bstats;
 
-import com.gmail.visualbukkit.blocks.ClassInfo;
-import com.gmail.visualbukkit.blocks.Statement;
+import com.gmail.visualbukkit.blocks.BlockDefinition;
+import com.gmail.visualbukkit.blocks.StatementBlock;
 import com.gmail.visualbukkit.blocks.parameters.ExpressionParameter;
-import com.gmail.visualbukkit.project.BuildContext;
+import com.gmail.visualbukkit.project.BuildInfo;
+import com.gmail.visualbukkit.reflection.ClassInfo;
 import org.jboss.forge.roaster.Roaster;
 import org.jboss.forge.roaster.model.source.JavaClassSource;
 
-public class StatConnectBstats extends Statement {
+@BlockDefinition(
+        id = "stat-connect-bstats",
+        name = "Connect bStats",
+        description = "Connects to bStats for statistics collection."
+)
+public class StatConnectBstats extends StatementBlock {
 
     public StatConnectBstats() {
-        super("stat-connect-bstats", "Connect To bStats", "bStats", "Connects the plugin to bStats");
+        addParameter("ID", new ExpressionParameter(ClassInfo.of(int.class)));
     }
 
     @Override
-    public Block createBlock() {
-        return new Block(this, new ExpressionParameter("ID", ClassInfo.INT)) {
-            @Override
-            public void prepareBuild(BuildContext buildContext) {
-                super.prepareBuild(buildContext);
-                buildContext.addUtilClass(Roaster.parse(JavaClassSource.class, BstatsExtension.METRICS_CLASS));
-            }
-
-            @Override
-            public String toJava() {
-                return "new Metrics(PluginMain.getInstance()," + arg(0) + ");";
-            }
-        };
+    public String generateJava(BuildInfo buildInfo) {
+        buildInfo.addClass(Roaster.parse(JavaClassSource.class, BstatsExtension.METRICS_CLASS));
+        return "new Metrics(this," + arg(0, buildInfo) + ");";
     }
 }

@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.gmail.visualbukkit</groupId>
-    <artifactId>vb-extensions</artifactId>
+    <artifactId>vb-extensions-rework</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
 
     <modules>
         <module>bStats</module>
-        <module>PlaceholderAPI</module>
-        <module>Vault</module>
+        <!--        <module>PlaceholderAPI</module>-->
+        <!--        <module>Vault</module>-->
     </modules>
 
     <properties>
@@ -21,13 +21,42 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
-            <groupId>com.gmail.visualbukkit</groupId>
-            <artifactId>vb-application</artifactId>
-            <version>5.4.0</version>
+            <groupId>com.github.OfficialDonut.VisualBukkit</groupId>
+            <artifactId>VB-Application</artifactId>
+            <version>master-a00f384d81-1</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>19.0.2</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>19.0.2</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.13.1</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
 </project>
