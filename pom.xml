@@ -13,6 +13,7 @@
         <module>bStats</module>
         <!--        <module>PlaceholderAPI</module>-->
         <!--        <module>Vault</module>-->
+        <module>AutoSave</module>
     </modules>
 
     <properties>
